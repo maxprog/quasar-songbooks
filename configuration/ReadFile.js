@@ -16,8 +16,8 @@ fs.readdir(path, function(err, items) {
     for (var i=0; i<items.length; i++) {
       var id = items[i].substring(0,items[i].indexOf('.'));
       tab.push({
-        id: id,
-       name: items[i],
+        id: id.replace(/^0+/, '').replace(/^A0+/, 'A'),
+       name: items[i].replace(/^0+/, '').replace(/^A0+/, 'A'),
        autor:''
      });
 
