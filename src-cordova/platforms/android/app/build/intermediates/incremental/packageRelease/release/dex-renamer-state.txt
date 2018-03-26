@@ -1,4 +1,4 @@
-#Sun Mar 25 20:53:57 CEST 2018
-base.0=/Users/grzegorzkroczek/Desktop/quasar-songbook/src-cordova/platforms/android/app/build/intermediates/transforms/dex/release/0
+#Mon Mar 26 15:03:20 CEST 2018
+base.0=/Users/grzegorzkroczek/Desktop/quasar-songbooks/src-cordova/platforms/android/app/build/intermediates/transforms/dex/release/0
 path.0=classes.dex
 renamed.0=classes.dex

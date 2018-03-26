@@ -44,7 +44,7 @@
         />
 
         <q-fab-action  color="blue" class="white"
-         :icon="isOutline ? 'ion-ios-list-outline' : 'ion-ios-list'"
+         :icon="isOutline ? 'ion-android-checkbox-outline-blank' : 'ion-android-checkbox-blank'"
           @click="isOutline  = !isOutline"
         />
       </q-fab>
@@ -169,7 +169,9 @@ export default {
 
     filterRecords(val)
     {
-      let items = this.songsTableData.filter((item) => {return val==item.id  || item.name.toLowerCase().replace(/^0+/, '').startsWith(val.toLowerCase()) || item.name.toLowerCase().replace(/^0+/, '').indexOf(val.toLowerCase())!==-1 });
+
+
+      let items = this.songsTableData.filter((item) => {return val==item.id  || item.name.replace(/^0+/, '').toLowerCase().startsWith(val.toLowerCase()) || item.name.replace(/^0+/, '').toLowerCase().indexOf(val.toLowerCase())!==-1 });
       return items.sort(function(a, b){
               var x = a.id.toLowerCase();
               var y = b.id.toLowerCase();

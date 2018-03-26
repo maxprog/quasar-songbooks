@@ -30,7 +30,7 @@
     <q-table
       :data="tableData"
       :columns="columns"
-      :filter="filter"
+      :filter="filterVal"
       :visible-columns="visibleColumns"
       :separator="separator"
       :pagination.sync="paginationControl"
@@ -43,7 +43,7 @@
         <q-search
           hide-underline
           color="secondary"
-          v-model="filter"
+          v-model="filterVal"
           class="col-6"
           placeholder="Szukaj"
         />
@@ -167,7 +167,7 @@ export default {
 
       ],
 
-      filter: '',
+
       visibleColumns: ['id','name'],
       separator: 'horizontal',
       selection: 'multiple',
@@ -183,6 +183,7 @@ export default {
     }
   },
   watch: {
+
     pageMeta(val){
 
             this.reloadData();
@@ -230,7 +231,7 @@ export default {
    methods: {
      cutZero(str)
     {
-      return str.replace(/^0+/, '');
+     return str.replace(/^0+/, '').replace(/^A0+/i, 'A');
     },
      reloadData()
 {
