@@ -59,7 +59,7 @@
           </q-item-side>
           <q-item-main>
             <q-item-tile sublabel>Mobile</q-item-tile>
-            <q-item-tile label>+48 606 519 794</q-item-tile>
+            <q-item-tile label>+48 506 402 746</q-item-tile>
 
           </q-item-main>
         </q-item>

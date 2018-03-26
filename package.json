@@ -1,6 +1,6 @@
 {
     "name": "songbooks",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Śpiewnik Pielgrzyma i Wędrowca",
     "productName": "Śpiewnik Pielgrzyma i Wędrowca",
     "cordovaId": "com.maxprog.songbooks",
