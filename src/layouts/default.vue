@@ -89,7 +89,7 @@
             </q-item>
             <q-item-separator :key="`separator-${category.title}`" />
           </template>
-          <q-item @click.native="exitApp()">
+          <q-item v-if="!$q.platform.is.ios" @click.native="exitApp()">
           <q-item-side>
 
             <q-item-tile icon="ion-android-exit"/>
