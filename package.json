@@ -1,6 +1,6 @@
 {
     "name": "songbooks",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "description": "Śpiewnik Pielgrzyma i Wędrowca",
     "productName": "Śpiewnik Pielgrzyma i Wędrowca",
     "cordovaId": "com.maxprog.songbooks",
@@ -26,7 +26,7 @@
         "eslint-plugin-promise": "^3.4.0",
         "eslint-plugin-standard": "^3.0.1",
         "eslint-plugin-vue": "^4.0.0",
-        "quasar-cli": "^0.15.12"
+        "quasar-cli": "^0.15.14"
     },
     "engines": {
         "node": ">= 8.9.0",
