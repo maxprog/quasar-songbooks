@@ -26,11 +26,22 @@
 
   </q-infinite-scroll>
 
-  <q-page-sticky position="top-right" :offset="[18, 18]">
+<q-page-sticky position="bottom-right" :offset="$q.platform.is.ios ? [10, 60] : [10,5]">
+        <q-btn
+          color="secondary"
+          fab
+          v-back-to-top.animate="{offset: 500, duration: 200}"
+          class="animate-pop"
+        >
+          <q-icon name="keyboard_arrow_up" />
+        </q-btn>
+      </q-page-sticky>
+
+  <q-page-sticky position="top-right" :offset="[10, 5]">
       <q-fab
         icon="settings"
         direction="left"
-        color="primary"
+        color="secondary"
       >
       <!--
       <q-fab-action v-if="($q.fullscreen && $q.fullscreen.isActive) && $q.theme=='mat'" color="secondary" class="white"
@@ -191,19 +202,15 @@ export default {
         if(positionFrom>0 && this.filterVal.length==0)
         {
 
-
-                items =  this.songsTableData;
-                if(items.length<=this.pageLength) this.lastPage=true;
-                else this.lastPage=false;
-
-                items = items.slice(positionFrom,positionTo);
+                items = this.songsTableData.slice(positionFrom,positionTo);
                 this.ListSongs = this.ListSongs.concat(items);
 
-
+                if(items.length<this.pageLength || positionTo==this.songsTableData.length) this.lastPage=true;
+                else this.lastPage=false;
         }
 
         done()
-      }, 100)
+      }, 50)
     },
     cutZero(str)
     {
@@ -314,8 +321,20 @@ this.showProgress();
   }
 }
 </script>
-
 <style lang="stylus">
+
+@import '~variables'
+.play-backtotop
+  color white
+  position fixed
+  left 0
+  top 30%
+  padding 15px
+  width 90px
+  background-color $secondary
+  border-radius 0 15px 15px 0
+  &:hover
+    color $grey-4
 .docs-btn
   .q-btn
     margin 5px
