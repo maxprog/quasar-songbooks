@@ -122,7 +122,7 @@
         </q-toolbar>
         <div class="layout-padding">
 
-          <p v-for="line in selectedSong.song"> {{line}}</p>
+          <p v-for="(line,index) in selectedSong.song" :key="index"> {{line}}</p>
         </div>
       </q-modal-layout>
     </q-modal>
@@ -134,7 +134,7 @@
 <script>
 import tableData from 'assets/table-data-pielgrzym'
 import { mapState } from 'vuex'
-import { QSpinnerFacebook, QSpinnerGears } from 'quasar'
+import { QSpinnerGears } from 'quasar'
 import xml2json from 'assets/html2json'
 import axios from 'axios'
 import pielgrzymTableData from 'assets/table-data-pielgrzym'
@@ -235,9 +235,9 @@ export default {
     },
      reloadData()
 {
-  if(this.pageMeta.songbook=='pielgrzym') this.songsTableData =  pielgrzymTableData;
+  if(this.pageMeta.songbook==='pielgrzym') this.songsTableData =  pielgrzymTableData;
       else
-      if(this.pageMeta.songbook=='wedrowiec') this.songsTableData =  wedrowiecTableData;
+      if(this.pageMeta.songbook==='wedrowiec') this.songsTableData =  wedrowiecTableData;
 
       this.tableData = this.songsTableData;//.map((item)=>{ return item.id});
 
@@ -254,7 +254,7 @@ export default {
 
       var idx = row.id;
 
-      this.selectedSong=this.songsTableData.filter((item) => {return item.id==idx });
+      this.selectedSong=this.songsTableData.filter((item) => {return item.id===idx });
       this.selectedSong = (this.selectedSong && this.selectedSong.length>0)? this.selectedSong[0]:{};
       var filename = `statics/${this.pageMeta.songbook}/${this.selectedSong.id}`;
 

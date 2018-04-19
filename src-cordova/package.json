@@ -1,8 +1,8 @@
 {
     "name": "com.maxprog.songbooks",
     "displayName": "Śpiewnik Pielgrzyma i Wędrowca",
-    "version": "2.3.0",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "version": "2.4.0",
+    "description": "Śpiewnik Pielgrzyma i Wędrowca",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

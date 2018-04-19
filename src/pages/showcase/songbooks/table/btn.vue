@@ -3,9 +3,9 @@
     <div style="width: 500px; max-width: 90vw;">
 
 
-      <br>
+      <br/>
      <q-search  v-model="filterVal"  placeholder="Szukaj"/>
-    <br>
+    <br/>
 
 
 
@@ -13,14 +13,14 @@
 
     <q-btn v-for="(item, index) in ListSongs" :outline="isOutline" push rounded color="primary"
           :class="!shortDescription || filterFullDescription ? 'full-width' : 'btn-fixed-width'"
-          :key="`song_${item.id}`"
+          :key="index"
           :label="!shortDescription || filterFullDescription ? `${cutZero(item.name)}` : `${cutZero(item.id)}`"
           @click="showSong(item.id)"
       />
 
 
 
-       <div v-show="!lastPage && this.filterVal.length==0" class="row justify-center" style="margin-bottom: 50px;">
+       <div v-show="!lastPage && this.filterVal.length===0" class="row justify-center" style="margin-bottom: 50px;">
           <q-spinner-dots slot="message" :size="40" />
         </div>
 
@@ -43,12 +43,7 @@
         direction="left"
         color="secondary"
       >
-      <!--
-      <q-fab-action v-if="($q.fullscreen && $q.fullscreen.isActive) && $q.theme=='mat'" color="secondary" class="white"
-        :icon="($q.fullscreen && $q.fullscreen.isActive) ? 'ion-arrow-expand' : 'fullscreen'"
-          @click="toggleFullscreen()"
-        />
--->
+
      <q-fab-action color="secondary" class="white"
         :icon="(!shortDescription) ? 'ion-android-apps' : 'ion-android-menu'"
           @click="shortDescription=!shortDescription"
@@ -85,7 +80,7 @@
           </q-toolbar-title>
         </q-toolbar>
         <div class="layout-padding">
-          <p v-for="line in selectedSong.song"> {{line}}</p>
+          <p v-for="(line,index) in selectedSong.song" :key="index"> {{line}}</p>
         </div>
       </q-modal-layout>
     </q-modal>
@@ -96,7 +91,7 @@
 
 
 <script>
-import { QSpinnerFacebook, QSpinnerGears } from 'quasar'
+import { QSpinnerGears } from 'quasar'
 import { mapState } from 'vuex'
 import xml2json from 'assets/html2json'
 import axios from 'axios'
@@ -182,7 +177,7 @@ export default {
     {
 
 
-      let items = this.songsTableData.filter((item) => {return val==item.id  || item.name.replace(/^0+/, '').toLowerCase().startsWith(val.toLowerCase()) || item.name.replace(/^0+/, '').toLowerCase().indexOf(val.toLowerCase())!==-1 });
+      let items = this.songsTableData.filter((item) => {return val===item.id  || item.name.replace(/^0+/, '').toLowerCase().startsWith(val.toLowerCase()) || item.name.replace(/^0+/, '').toLowerCase().indexOf(val.toLowerCase())!==-1 });
       return items.sort(function(a, b){
               var x = a.id.toLowerCase();
               var y = b.id.toLowerCase();
@@ -199,18 +194,18 @@ export default {
         let positionTo=this.page*this.pageLength;
         let positionFrom=positionTo-this.pageLength;
 
-        if(positionFrom>0 && this.filterVal.length==0)
+        if(positionFrom>0 && this.filterVal.length===0)
         {
 
                 items = this.songsTableData.slice(positionFrom,positionTo);
                 this.ListSongs = this.ListSongs.concat(items);
 
-                if(items.length<this.pageLength || positionTo==this.songsTableData.length) this.lastPage=true;
+                if(items.length<this.pageLength || positionTo===this.songsTableData.length) this.lastPage=true;
                 else this.lastPage=false;
         }
 
         done()
-      }, 50)
+      }, 1)
     },
     cutZero(str)
     {
@@ -225,9 +220,9 @@ this.layoutModal=false;
 },
 reloadData()
 {
-  if(this.pageMeta.songbook=='pielgrzym') this.songsTableData =  pielgrzymTableData;
+  if(this.pageMeta.songbook==='pielgrzym') this.songsTableData =  pielgrzymTableData;
       else
-      if(this.pageMeta.songbook=='wedrowiec') this.songsTableData =  wedrowiecTableData;
+      if(this.pageMeta.songbook==='wedrowiec') this.songsTableData =  wedrowiecTableData;
 
       this.ListSongs = this.songsTableData.slice(0,this.pageLength);
 
@@ -307,7 +302,7 @@ this.showProgress();
     filterSong(idx)
     {
 
-      return (!this.filterVal || this.filterVal=='' || idx==this.filterVal)? 1 : 0;
+      return (!this.filterVal || this.filterVal==='' || idx==this.filterVal)? 1 : 0;
     },
     alert (mess) {
       this.$q.dialog({
