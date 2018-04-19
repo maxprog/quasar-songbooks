@@ -13,8 +13,6 @@ import Vue from 'vue'
 Vue.config.productionTip = false
 
 
-import 'quasar-extras/roboto-font'
-
 import 'quasar-extras/material-icons'
 
 import 'quasar-extras/mdi'
@@ -55,9 +53,21 @@ store,
 
 
 
+  
+    // Needed only for iOS
+    import FastClick from 'fastclick'
+    document.addEventListener('DOMContentLoaded', () => {
+      FastClick.attach(document.body)
+    }, false)
+  
+document.addEventListener('deviceready', () => {
+Vue.prototype.$q.cordova = window.cordova
+
 
 
 new Vue(app)
 
 
+
+}, false) // on deviceready
 
