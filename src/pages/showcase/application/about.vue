@@ -14,7 +14,7 @@
       </q-card-title>
       <q-card-main>
         <p>Pieśni Chrześcijańskie</p>
-         <p> <b>Wersja: 2.4</b></p>
+         <p> <b>Wersja: 2.5</b></p>
 
         <q-tabs color="secondary" glossy align="justify">
 

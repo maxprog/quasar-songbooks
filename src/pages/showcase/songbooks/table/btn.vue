@@ -68,7 +68,7 @@
             dense
             @click="layoutModal = false"
             icon="reply"
-            wait-for-ripple
+            v-close-overlay
           />
           <q-toolbar-title>
            {{selectedSong.name}}
@@ -76,7 +76,7 @@
         </q-toolbar>
         <q-toolbar slot="footer">
           <q-toolbar-title align="center">
-           <q-btn color="primary" @click="layoutModal = false" wait-for-ripple label="Zamknij" />
+           <q-btn color="primary" @click="layoutModal = false" v-close-overlay label="Zamknij" />
           </q-toolbar-title>
         </q-toolbar>
         <div class="layout-padding">
@@ -188,7 +188,7 @@ export default {
     },
 
     refresher (index, done) {
-      setTimeout(() => {
+   //   setTimeout(() => {
         let items = [];
         this.page=this.page+1;
         let positionTo=this.page*this.pageLength;
@@ -205,7 +205,7 @@ export default {
         }
 
         done()
-      }, 1)
+    //  }, 1)
     },
     cutZero(str)
     {
@@ -225,14 +225,6 @@ reloadData()
       if(this.pageMeta.songbook==='wedrowiec') this.songsTableData =  wedrowiecTableData;
 
       this.ListSongs = this.songsTableData.slice(0,this.pageLength);
-
-   /*    this.$q.notify({
-              color: 'positive',
-              position: 'top',
-              message: 'Załadowano pieśni',
-              icon: 'report_problem'
-            });
-            */
 },
 
     showSong(idx){

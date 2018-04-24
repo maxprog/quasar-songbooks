@@ -1,30 +1,7 @@
 <template>
   <q-page padding class="docs-table">
 
-<!--
-<q-page-sticky position="top-right" :offset="[10, 10]">
-      <q-fab
-        icon="settings"
-        direction="left"
-        color="primary"
-      >
 
-
- <q-fab-action v-if="($q.fullscreen && $q.fullscreen.isActive) && $q.theme=='mat'" color="secondary" class="white"
-        :icon="($q.fullscreen && $q.fullscreen.isActive) ? 'ion-arrow-expand' : 'fullscreen'"
-          @click="toggleFullscreen()"
-        />
-
-        <q-fab-action  color="blue" class="white"
-         :icon="!dark ? 'ion-ios-list-outline' : 'ion-ios-list'"
-          @click="dark  = !dark"
-        />
-      </q-fab>
-    </q-page-sticky>
-<br/>
-
-   <p class="caption"></p>
--->
 
 
     <q-table
@@ -49,16 +26,7 @@
         />
       </template>
       <template slot="top-right" slot-scope="props">
-     <!--   <q-table-columns
 
-          color="secondary"
-          :dark="dark"
-          class="q-mr-sm"
-          v-model="visibleColumns"
-          :columns="columns"
-          label="Kolumny"
-        />
-        -->
         <q-select
           color="secondary"
           v-model="separator"
@@ -109,7 +77,7 @@
             dense
             @click="layoutModal = false"
             icon="reply"
-            wait-for-ripple
+            v-close-overlay
           />
           <q-toolbar-title>
            {{selectedSong.name}}
@@ -117,7 +85,7 @@
         </q-toolbar>
         <q-toolbar slot="footer">
           <q-toolbar-title align="center">
-           <q-btn color="primary" @click="layoutModal = false" wait-for-ripple label="Zamknij" />
+           <q-btn color="primary" @click="layoutModal = false" v-close-overlay label="Zamknij" />
           </q-toolbar-title>
         </q-toolbar>
         <div class="layout-padding">
